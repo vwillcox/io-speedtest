@@ -45,7 +45,8 @@ def decode_upload():
 if __name__ == '__main__':
    results=run_speedtest()
    if (results != 'Error'):
-      print("Running")
+      #print("Running")
       decode_upload()
    else :
-      print("Error")
+      pass
+      #print("Error")
