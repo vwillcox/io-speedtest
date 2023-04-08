@@ -4,3 +4,4 @@ sudo apt install speedtest -y
 pip3 install -r requirements.txt
 sudo pip3 install -r requirements.txt
 speedtest
+sudo speedtest
