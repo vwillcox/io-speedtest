@@ -15,13 +15,16 @@ aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 stdoutdata = subprocess.getoutput("speedtest -f json")
 #print(stdoutdata.split()[0])
 results = json.loads(stdoutdata)
-for key in results:
-   download = results["download"]["bandwidth"] 
-   upload = results["upload"]["bandwidth"]
-   pings = results["ping"]["high"]
-   jit = results["ping"]["jitter"]
-   lat = results["ping"]["latency"]
-   isp = results["isp"]
+try:
+   for key in results:
+      download = results["download"]["bandwidth"] 
+      upload = results["upload"]["bandwidth"]
+      pings = results["ping"]["high"]
+      jit = results["ping"]["jitter"]
+      lat = results["ping"]["latency"]
+      isp = results["isp"]
+except ValueError:
+   print("Thats an error")
 
 #Format Data into English units
 down = str(round(download / 125000, 2))
