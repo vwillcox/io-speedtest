@@ -18,6 +18,9 @@ results = json.loads(stdoutdata)
 for key in results:
    download = results["download"]["bandwidth"] 
    upload = results["upload"]["bandwidth"]
+   pings = results["ping"]["high"]
+   jit = results["ping"]["jitter"]
+   lat = results["ping"]["latency"]
    isp = results["isp"]
 
 #Format Data into English units
@@ -32,7 +35,12 @@ up = str(round(upload / 125000, 2))
 
 upload = aio.feeds("speedtesting.up")
 download = aio.feeds("speedtesting.down")
-
+ping = aio.feeds("speedtesting.ping")
+latency = aio.feeds("speedtesting.lat")
+jitter = aio.feeds("speedtesting.jit")
 
 aio.send(upload.key, up)
 aio.send(download.key, down)
+aio.send(ping.key, pings)
+aio.send(jitter.key, jit)
+aio.send(latency.key, lat)
